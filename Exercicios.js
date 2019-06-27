@@ -38,11 +38,10 @@ deve ser um array.
 Os números que seguem devem ser elimados do array. ps: Necessário usar objeto arguments.
 */
 function destroyer(array) {
-    const arg = Array.prototype.slice.call(arguments, 1)
+    const arg = Array.prototype.slice.call(arguments, 1);
 
-    arg.forEach(num => {
-        let index = array.indexOf(num);
-
+    arg.forEach(item => {
+        let index = array.indexOf(item);
         if ( index > -1) {
             array.splice(index, 1);          
         }
@@ -54,3 +53,26 @@ function destroyer(array) {
 console.log('Resultado do exercicio numero 2:');
 console.log(destroyer([4, 1, 3, 5, 7, 8], 1, 3, 5));
 console.log();
+
+/*
+Exercicio numero 3 - Peneirinha Refinada
+Crie um algoritmo que recebe dois parãmetros: o primeiro é um array de elementos 
+e o segundo é uma função anônima. Este algoritmo deve filtrar esse array de acordo
+com o critério passado na função anônima.
+*/
+function dropElements(array, fun) {
+    let newArray = array.filter(item => {
+        if(fun(item)) {
+            return item;
+        }
+    });
+
+    return newArray;
+}
+
+console.log('Resultado do exercicio numero 3:');
+console.log(dropElements([4, 1, 3, 5, 7, 8], function(n){ return n >= 5; }));
+console.log();
+
+
+
