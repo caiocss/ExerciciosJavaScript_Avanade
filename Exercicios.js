@@ -54,6 +54,7 @@ console.log('Resultado do exercicio numero 2:');
 console.log(destroyer([4, 1, 3, 5, 7, 8], 1, 3, 5));
 console.log();
 
+
 /*
 Exercicio numero 3 - Peneirinha Refinada
 Crie um algoritmo que recebe dois parãmetros: o primeiro é um array de elementos 
@@ -71,6 +72,29 @@ function dropElements(array, fun) {
 }
 
 console.log('Resultado do exercicio numero 3:');
+console.log(dropElements([4, 1, 3, 5, 7, 8], function(n){ return n >= 5; }));
+console.log();
+
+
+/*
+Exercicio numero 4 - O Clone
+Crie um objeto chamado Professor que deriva de Pessoa  e implementa um método 
+chamado ensinar() que recebe uma string e imprime na tela: 
+"[Nome do Professor] esta ensinando [matéria]."
+ps. Cada objeto precisa ter ao menos três atributos.
+*/
+function Pessoa(nome, idade, sexo) {
+    this.Nome = nome;
+    this.Idade = idade;
+    this.Sexo = sexo;
+}
+
+function Professor(nome, idade, sexo, materia) {
+    Pessoa.call(this, nome, idade, sexo);
+    this.Materia = materia;
+}
+
+console.log('Resultado do exercicio numero 4:');
 console.log(dropElements([4, 1, 3, 5, 7, 8], function(n){ return n >= 5; }));
 console.log();
 
