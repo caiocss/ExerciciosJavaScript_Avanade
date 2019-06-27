@@ -38,7 +38,10 @@ deve ser um array.
 Os números que seguem devem ser elimados do array. ps: Necessário usar objeto arguments.
 */
 function destroyer(array) {
-    const arg = Array.prototype.slice.call(arguments, 1);
+    //arguments pega todos os argumentos da função
+    //slice remove o item do indice 0 do arguments pegando todos os valores a partir do indice 1
+    //o call é um método de objeto que substitui um outro objeto para o objeto corrente
+    const arg = Array.prototype.slice.call(arguments, 1); 
 
     arg.forEach(item => {
         let index = array.indexOf(item);
@@ -84,18 +87,28 @@ chamado ensinar() que recebe uma string e imprime na tela:
 ps. Cada objeto precisa ter ao menos três atributos.
 */
 function Pessoa(nome, idade, sexo) {
-    this.Nome = nome;
-    this.Idade = idade;
-    this.Sexo = sexo;
+    this.nome = nome;
+    this.idade = idade;
+    this.sexo = sexo;
 }
 
 function Professor(nome, idade, sexo, materia) {
     Pessoa.call(this, nome, idade, sexo);
-    this.Materia = materia;
+    this.materia = materia; 
 }
 
+Professor.prototype = new Pessoa(); //Define uma instância de Pessoa como prototype de Professor
+Professor.prototype.constructor = Professor; // Indica que o construtor é o Professor
+
+var professor1 = new Professor('Caio', 23, 'M', 'Lógica de Programação');
+
+//Cria uma novo método para Professor após o mesmo ser criado
+Professor.prototype.ensinar = function() {
+    console.log(this.nome + ' esta ensinando ' + this.materia + '.');
+};
+
 console.log('Resultado do exercicio numero 4:');
-console.log(dropElements([4, 1, 3, 5, 7, 8], function(n){ return n >= 5; }));
+console.log(professor1.ensinar());
 console.log();
 
 
