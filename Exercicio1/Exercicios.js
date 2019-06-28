@@ -41,8 +41,8 @@ function destroyer(array) {
     //arguments pega todos os argumentos da função
     //slice remove o item do indice 0 do arguments pegando todos os valores a partir do indice 1
     //o call é um método de objeto que substitui um outro objeto para o objeto corrente
-    const arg = Array.prototype.slice.call(arguments, 1); 
-
+    const arg = Array.prototype.slice.call(arguments, 1);
+    
     arg.forEach(item => {
         let index = array.indexOf(item);
         if ( index > -1) {
