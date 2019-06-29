@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body, div {
+            height: 500px;
+        }
+
+        div {
+            display: flex;
+            flex-direction:row;
+            justify-content: space-around;
+            align-items:center;
+        }
+
+        .section_foguete {
+            height: 600px;
+            display: flex;
+            flex-direction:column;
+            justify-content: flex-end;            
+        }
+
+        #img_foguete {
+            align-self:flex-end;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <section class="container ">
+            <h1>Contagem Regressiva</h1>
+            <input type="text" id="write"/>
+            <br />
+            <br />
+            <button id="botao">Contagem</button>
+            <p id="valor"></p>
+        </section>
+
+        <section class="section_foguete">
+            <img id="img_foguete" src="foguete.png" height=150>
+        </section>
+    </div>
+
+    <script>
+        var botao = document.getElementById("botao");
+
+        botao.addEventListener("click", function(event) {
+            var valor = document.getElementById("write").value;
+            contagem(parseInt(valor), liberarFoguete);
+            
+        }); 
+
+        function contagem(valor, callback) {
+            var contador = setInterval(function () {
+                document.getElementById("valor").innerHTML = valor--;
+                if(valor == -1){
+                    clearInterval(contador);
+                    callback();
+                }
+            }, 1000)            
+        }
+
+        function liberarFoguete() {
+            var foguete = document.querySelector(".section_foguete");
+            var valor = 600;
+            var contador = setInterval(function () {
+
+                valor--;
+
+                foguete.style.height = valor + "px";
+
+               if(valor == 0){
+                   clearInterval(contador);
+                   alert("Foguete lançado!");
+               }
+            }, 1)
+        }
+    </script>
+</body>
+</html>
